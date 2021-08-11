@@ -35,8 +35,8 @@
         color: #0d0d0d;
       }
 
-      &:hover {
-        box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+      &.active > h2 {
+        color: #0d0d0d;
       }
 
       h2 {
@@ -46,6 +46,28 @@
         width: 100%;
         margin: 0 auto;
         padding: 30px 0;
+      }
+    }
+
+    #work {
+      &:hover {
+        background-color: rgb(240, 240, 240);
+        border-radius: 15px 0 0 0;
+      }
+
+      &.active {
+        background-color: rgb(240, 240, 240);
+        border-radius: 15px 0 0 0;
+      }
+    }
+
+    #flood {
+      &:hover {
+        background-color: rgb(240, 240, 240);
+      }
+
+      &.active {
+        background-color: rgb(240, 240, 240);
       }
     }
   }
@@ -65,12 +87,6 @@
     font-size: 20px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
     transition: 0.15s all ease;
-
-    &:hover {
-      cursor: pointer;
-      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
-      transform: scale(1.02);
-    }
 
     .contacts__image {
       background-image: url(../../assets/image/profile.png);
