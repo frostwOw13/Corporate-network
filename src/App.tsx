@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import './App.scss';
+import Chat from './components/Chat/Chat';
 import LoginForm from './components/LoginForm/LoginForm';
 import { RootState } from './shared/interfaces';
 
 const App: React.FC = () => {
-  const [user, setUser] = useState({ username: "" });
+  const [user, setUser] = useState({ username: "12" });
   const [error, setError] = useState<string>("");
 
   const users = useSelector((state: RootState) => state.users);
@@ -33,6 +34,7 @@ const App: React.FC = () => {
           <button className="welcome-btn" onClick={logout} type="button">Logout</button>
           <h2 className="welcome-message">Welcome, <span>{user.username}</span></h2>
         </div>
+        <Chat />
       </div>
     ) : (
       <LoginForm login={login} loginError={error} />

@@ -74,7 +74,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ loginError, login }) => {
               name="login"
               onChange={changeInputHandler}
               placeholder="username"
-              type="password"
+              type="text"
               value={userDetails.username}
             />
             <input
