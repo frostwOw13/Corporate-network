@@ -55,6 +55,7 @@
 
 .chat__area {
   height: 100%;
+  overflow-y: scroll;
 }
 
 .chat__list {
@@ -68,6 +69,12 @@
     margin-bottom: 10px;
     text-align: start;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover > .item__controls {
+      display: block;
+    }
 
     .item__author {
       margin: 5px 0;
@@ -75,6 +82,40 @@
 
     .item__text {
       margin: 0 0 5px;
+      flex-basis: 90%;
     }
   }
 }
+
+.item__textarea {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 90%;
+}
+
+.item__controls {
+  display: none;
+
+  .item__btn {
+    width: 23px;
+    height: 23px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 50%;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  #edit {
+    background-image: url(../../../assets/image/edit.png);
+  }
+
+  #delete {
+    background-image: url(../../../assets/image/delete.png);
+  }
+}
+
+

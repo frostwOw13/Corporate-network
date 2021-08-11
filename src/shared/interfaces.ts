@@ -24,6 +24,10 @@ export interface LoginFormProps {
   loginError: string
 }
 
+export interface ChatProps {
+  author: string
+}
+
 export interface RootState {
   users: IUser[],
   messages: IMessage[]

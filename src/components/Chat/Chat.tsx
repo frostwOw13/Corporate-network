@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
+import { ChatProps } from '../../shared/interfaces';
 import ChatFlood from './ChatFlood/ChatFlood';
 import ChatWork from './ChatWork/ChatWork';
 import './Chat.scss';
 
-const Chat = () => {
+const Chat: React.FC<ChatProps> = ({ author }) => {
   const [chat, setChat] = useState<string>('work');
 
   const chatHandler = (e: React.MouseEvent<HTMLElement>) => {
@@ -50,7 +51,7 @@ const Chat = () => {
           </ul>
         </div>
         {chat === "work" ? (
-          <ChatWork />
+          <ChatWork author={author} />
         ) : (
           <ChatFlood />
         )}

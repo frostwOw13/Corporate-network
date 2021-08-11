@@ -8,7 +8,7 @@ export const setUsers = (user: IUser) => (
   }
 );
 
-export const setMessage = (message: IMessage) => (
+export const setWorkMessage = (message: IMessage) => (
   {
     type: ActionTypes.SET_WORK_MESSAGE,
     payload: message,

@@ -34,7 +34,7 @@ const App: React.FC = () => {
           <button className="welcome-btn" onClick={logout} type="button">Logout</button>
           <h2 className="welcome-message">Welcome, <span>{user.username}</span></h2>
         </div>
-        <Chat />
+        <Chat author={user.username} />
       </div>
     ) : (
       <LoginForm login={login} loginError={error} />

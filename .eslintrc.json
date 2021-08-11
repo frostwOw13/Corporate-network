@@ -63,6 +63,7 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/state-in-constructor": ["error", "never"],
+    "react/no-array-index-key": "off",
     "semi": 1,
     "sort-imports": ["error", {
       "ignoreCase": true,
