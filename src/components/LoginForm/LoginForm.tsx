@@ -1,13 +1,41 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
+import setUsers from '../../redux/actions/usersActions';
+import { IUser } from '../../shared/interfaces';
 import './LoginForm.scss';
 
 const LoginForm: React.FC = () => {
   const [mode, setMode] = useState<string>('login');
+  const [userDetails, setUserDetails] = useState<IUser>({
+    username: '',
+    password: '',
+    id: 0,
+  });
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [error, setError] = useState<string>("");
+  const dispatch = useDispatch();
 
   const switchMode = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as Element;
     setMode(target.id);
+  };
+
+  const changeInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    if (id === "confirmPassword") setConfirmPassword(value);
+    else setUserDetails({ ...userDetails, [id]: value });
+  };
+
+  const submitHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    if (userDetails.username && userDetails.password) {
+      if (userDetails.password === confirmPassword) {
+        dispatch(setUsers(userDetails));
+        setError("");
+      }
+      else setError("Passwords do not match");
+    } else setError("Username or password shouldn't be empty");
   };
 
   return (
@@ -32,47 +60,63 @@ const LoginForm: React.FC = () => {
 
         {mode === 'login' ? (
           <form>
+            {error !== "" ? <div className="error">{error}</div> : ""}
             <input
               className="first"
-              id="login"
+              id="username"
               name="login"
+              onChange={changeInputHandler}
               placeholder="username"
-              type="text"
+              type="password"
+              value={userDetails.username}
             />
             <input
               className="second"
               id="password"
               name="login"
+              onChange={changeInputHandler}
               placeholder="password"
-              type="text"
+              type="password"
+              value={userDetails.password}
             />
             <input className="third" type="submit" value="Log In" />
           </form>
         ) : (
           <form>
+            {error !== "" ? <div className="error">{error}</div> : ""}
             <input
               className="first"
-              id="signup"
+              id="username"
               name="signup"
+              onChange={changeInputHandler}
               placeholder="username"
               type="text"
+              value={userDetails.username}
             />
             <input
               className="second"
               id="password"
               name="signup"
+              onChange={changeInputHandler}
               placeholder="password"
-              type="text"
+              type="password"
+              value={userDetails.password}
             />
             <input
               className="third"
               id="confirmPassword"
               name="signup"
+              onChange={changeInputHandler}
               placeholder="confirm password"
-              type="text"
-              value=""
+              type="password"
+              value={confirmPassword}
             />
-            <input className="fourth" type="submit" value="Sign Up" />
+            <input
+              className="fourth"
+              onClick={submitHandler}
+              type="submit"
+              value="Sign Up"
+            />
           </form>
         )}
 

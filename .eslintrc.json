@@ -24,6 +24,8 @@
         "allowSingleExtends": true
       }
     ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "comma-dangle": "off",
     "global-require": "off",
@@ -61,7 +63,7 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/state-in-constructor": ["error", "never"],
-    "semi": "error",
+    "semi": 1,
     "sort-imports": ["error", {
       "ignoreCase": true,
       "ignoreDeclarationSort": true
