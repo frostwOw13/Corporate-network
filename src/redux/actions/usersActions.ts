@@ -1,11 +1,16 @@
-import { IUser } from '../../shared/interfaces';
+import { IMessage, IUser } from '../../shared/interfaces';
 import ActionTypes from '../constants/action-types';
 
-const setUsers = (user: IUser) => (
+export const setUsers = (user: IUser) => (
   {
     type: ActionTypes.SET_USERS,
     payload: user,
   }
 );
 
-export default setUsers;
+export const setMessage = (message: IMessage) => (
+  {
+    type: ActionTypes.SET_WORK_MESSAGE,
+    payload: message,
+  }
+);

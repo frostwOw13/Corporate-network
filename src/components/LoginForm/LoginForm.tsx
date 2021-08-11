@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import setUsers from '../../redux/actions/usersActions';
+import { setUsers } from '../../redux/actions/usersActions';
 import { IUser, LoginFormProps } from '../../shared/interfaces';
 import './LoginForm.scss';
 

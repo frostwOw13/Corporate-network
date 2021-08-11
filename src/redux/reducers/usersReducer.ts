@@ -1,7 +1,7 @@
-import { IUserReducerProps } from '../../shared/interfaces';
+import { IMessageReducerProps, IUserReducerProps } from '../../shared/interfaces';
 import ActionTypes from '../constants/action-types';
 
-const initialState = [
+const initialStateUsers = [
   {
     username: "admin",
     password: "admin",
@@ -19,7 +19,18 @@ const initialState = [
   }
 ];
 
-const usersReducer = (state = initialState, { type, payload }: IUserReducerProps) => {
+const workMessages = [
+  {
+    message: "Lorem ipsum lorem ipsum",
+    author: "admin"
+  },
+  {
+    message: "Lorem impus asda d a ewq f as a sdadsada as ",
+    author: "admin1"
+  }
+];
+
+export const usersReducer = (state = initialStateUsers, { type, payload }: IUserReducerProps) => {
   switch (type) {
     case ActionTypes.SET_USERS:
       return [ ...state, payload ];
@@ -28,4 +39,11 @@ const usersReducer = (state = initialState, { type, payload }: IUserReducerProps
   }
 };
 
-export default usersReducer;
+export const workMessagesReducer = (state = workMessages, { type, payload }: IMessageReducerProps) => {
+  switch (type) {
+    case ActionTypes.SET_WORK_MESSAGE:
+      return [ ...state, payload  ];
+    default:
+      return state;
+  }
+};

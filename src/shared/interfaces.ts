@@ -4,9 +4,19 @@ export interface IUser {
   id: number
 }
 
+export interface IMessage {
+  message: string,
+  author: string
+}
+
 export interface IUserReducerProps {
   type: string,
   payload: IUser
+}
+
+export interface IMessageReducerProps {
+  type: string,
+  payload: IMessage
 }
 
 export interface LoginFormProps {
@@ -15,5 +25,6 @@ export interface LoginFormProps {
 }
 
 export interface RootState {
-  users: IUser[]
+  users: IUser[],
+  messages: IMessage[]
 }
