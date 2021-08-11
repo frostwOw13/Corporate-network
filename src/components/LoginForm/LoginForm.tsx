@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import setUsers from '../../redux/actions/usersActions';
-import { IUser } from '../../shared/interfaces';
+import { IUser, LoginFormProps } from '../../shared/interfaces';
 import './LoginForm.scss';
 
-const LoginForm: React.FC = () => {
+const LoginForm: React.FC<LoginFormProps> = ({ loginError, login }) => {
   const [mode, setMode] = useState<string>('login');
   const [userDetails, setUserDetails] = useState<IUser>({
     username: '',
@@ -13,7 +13,7 @@ const LoginForm: React.FC = () => {
     id: 0,
   });
   const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
   const dispatch = useDispatch();
 
   const switchMode = (e: React.MouseEvent<HTMLElement>) => {
@@ -23,19 +23,26 @@ const LoginForm: React.FC = () => {
 
   const changeInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    if (id === "confirmPassword") setConfirmPassword(value);
+    if (id === 'confirmPassword') setConfirmPassword(value);
     else setUserDetails({ ...userDetails, [id]: value });
   };
 
   const submitHandler = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
-    if (userDetails.username && userDetails.password) {
-      if (userDetails.password === confirmPassword) {
-        dispatch(setUsers(userDetails));
-        setError("");
-      }
-      else setError("Passwords do not match");
-    } else setError("Username or password shouldn't be empty");
+
+    if (mode === 'login') {
+      login(userDetails.username, userDetails.password);
+    } else if (mode === 'signup') {
+      if (userDetails.username && userDetails.password) {
+        if (userDetails.password === confirmPassword) {
+          dispatch(
+            setUsers({ ...userDetails, id: Math.ceil(Math.random() * 100000) })
+          );
+          login(userDetails.username, userDetails.password, mode);
+          setError('');
+        } else setError('Passwords do not match');
+      } else setError("Username or password shouldn't be empty");
+    }
   };
 
   return (
@@ -60,7 +67,7 @@ const LoginForm: React.FC = () => {
 
         {mode === 'login' ? (
           <form>
-            {error !== "" ? <div className="error">{error}</div> : ""}
+            {loginError !== '' ? <div className="error">{loginError}</div> : ''}
             <input
               className="first"
               id="username"
@@ -79,11 +86,16 @@ const LoginForm: React.FC = () => {
               type="password"
               value={userDetails.password}
             />
-            <input className="third" type="submit" value="Log In" />
+            <input
+              className="third"
+              onClick={submitHandler}
+              type="submit"
+              value="Log In"
+            />
           </form>
         ) : (
           <form>
-            {error !== "" ? <div className="error">{error}</div> : ""}
+            {error !== '' ? <div className="error">{error}</div> : ''}
             <input
               className="first"
               id="username"
