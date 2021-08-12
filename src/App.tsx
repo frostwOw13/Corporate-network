@@ -7,7 +7,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import { RootState } from './shared/interfaces';
 
 const App: React.FC = () => {
-  const [user, setUser] = useState({ username: '12', password: '', id: 0 });
+  const [user, setUser] = useState({ username: '', password: '', id: 0 });
   const [error, setError] = useState<string>('');
 
   const users = useSelector((state: RootState) => state.users);

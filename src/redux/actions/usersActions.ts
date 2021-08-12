@@ -28,3 +28,24 @@ export const deleteWorkMessage = (message: IMessage) => (
     payload: message
   }
 );
+
+export const setFloodMessage = (message: IMessage) => (
+  {
+    type: ActionTypes.SET_FLOOD_MESSAGE,
+    payload: message,
+  }
+);
+
+export const updateFloodMessage = (message: IMessage) => (
+  {
+    type: ActionTypes.UPDATE_FLOOD_MESSAGE,
+    payload: message
+  }
+);
+
+export const deleteFloodMessage = (message: IMessage) => (
+  {
+    type: ActionTypes.DELETE_FLOOD_MESSAGE,
+    payload: message
+  }
+);

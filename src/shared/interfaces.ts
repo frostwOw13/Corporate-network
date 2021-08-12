@@ -31,5 +31,6 @@ export interface ChatProps {
 
 export interface RootState {
   users: IUser[],
-  workMessages: IMessage[]
+  workMessages: IMessage[],
+  floodMessages: IMessage[]
 }

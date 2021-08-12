@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 
-import { usersReducer, workMessagesReducer } from './usersReducer';
+import { floodMessagesReducer, usersReducer, workMessagesReducer } from './usersReducer';
 
 const reducers = combineReducers({
   users: usersReducer,
   workMessages: workMessagesReducer,
+  floodMessages: floodMessagesReducer,
 });
 
 export default reducers;

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { ChatProps } from '../../shared/interfaces';
+import { ChatProps, RootState } from '../../shared/interfaces';
 import ChatFlood from './ChatFlood/ChatFlood';
 import ChatWork from './ChatWork/ChatWork';
 import './Chat.scss';
 
 const Chat: React.FC<ChatProps> = ({ author }) => {
   const [chat, setChat] = useState<string>('work');
+  const users = useSelector((state: RootState) => state.users);
 
   const chatHandler = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as Element;
@@ -40,20 +42,18 @@ const Chat: React.FC<ChatProps> = ({ author }) => {
             </div>
           </div>
           <ul className="contacts__list">
-            <li className="contacts__item">
-              <div className="contacts__image" />
-              admin1
-            </li>
-            <li className="contacts__item">
-              <div className="contacts__image" />
-              admin2
-            </li>
+            {users.map((user) => (
+              <li className="contacts__item">
+                <div className="contacts__image" />
+                {user.username}
+              </li>
+            ))}
           </ul>
         </div>
         {chat === "work" ? (
           <ChatWork author={author} />
         ) : (
-          <ChatFlood />
+          <ChatFlood author={author} />
         )}
       </div>
     </div>
