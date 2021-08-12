@@ -4,7 +4,7 @@ import { usersReducer, workMessagesReducer } from './usersReducer';
 
 const reducers = combineReducers({
   users: usersReducer,
-  messages: workMessagesReducer,
+  workMessages: workMessagesReducer,
 });
 
 export default reducers;

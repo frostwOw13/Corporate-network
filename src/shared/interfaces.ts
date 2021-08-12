@@ -6,7 +6,8 @@ export interface IUser {
 
 export interface IMessage {
   message: string,
-  author: string
+  author: string,
+  id: number
 }
 
 export interface IUserReducerProps {
@@ -25,10 +26,10 @@ export interface LoginFormProps {
 }
 
 export interface ChatProps {
-  author: string
+  author: IUser
 }
 
 export interface RootState {
   users: IUser[],
-  messages: IMessage[]
+  workMessages: IMessage[]
 }

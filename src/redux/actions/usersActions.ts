@@ -14,3 +14,17 @@ export const setWorkMessage = (message: IMessage) => (
     payload: message,
   }
 );
+
+export const updateWorkMessage = (message: IMessage) => (
+  {
+    type: ActionTypes.UPDATE_WORK_MESSAGE,
+    payload: message
+  }
+);
+
+export const deleteWorkMessage = (message: IMessage) => (
+  {
+    type: ActionTypes.DELETE_WORK_MESSAGE,
+    payload: message
+  }
+);
