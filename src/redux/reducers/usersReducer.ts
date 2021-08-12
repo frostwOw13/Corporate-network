@@ -4,45 +4,60 @@ import ActionTypes from '../constants/action-types';
 
 const initialStateUsers = [
   {
-    username: "admin",
-    password: "admin",
+    username: "Terrell C. Roberts",
+    password: "qwerty",
     id: 0
   },
   {
-    username: "admin1",
-    password: "admin1",
+    username: "John C. Kemp",
+    password: "123",
     id: 1
   },
   {
-    username: "admin2",
-    password: "admin2",
+    username: "Dalton J. Stevens",
+    password: "qwerty123",
     id: 2
   }
 ];
 
 const workMessages = [
   {
-    message: "Lorem ipsum lorem ipsum",
-    author: "admin",
+    message: "We are fortunate to have a hard worker like you. We are proud of you. Well done!",
+    author: "Terrell C. Roberts",
     id: 0
   },
   {
-    message: "Lorem impus asda d a ewq f as a sdadsada as ",
-    author: "admin1",
+    message: "The way you gracefully pulled off the work – I am so proud of you.",
+    author: "Dalton J. Stevens",
     id: 1
   }
 ];
 
 const floodMessages = [
   {
-    message: "12321417vp837cp283c74pj23c421",
-    author: "admin",
+    message: "Hey, how was your weekend?",
+    author: "Terrell C. Roberts",
     id: 0
   },
   {
-    message: "Lorem21314143ccxxcf as a sdadsada as ",
-    author: "admin1",
+    message: "Pretty good! I went to a baseball game with my brother.",
+    author: "John C. Kemp",
     id: 1
+  },
+  {
+    message: "Really? Who was playing?",
+    author: "Terrell C. Roberts",
+    id: 2
+  },
+  {
+    message: "The Yankees and the Red Sox. We’re huge Yankees fans!",
+    author: "John C. Kemp",
+    id: 3
+  },
+  {
+    message: "No kidding! You must be really good.",
+    author: "Terrell C. Roberts",
+    id: 4
   }
 ];
 
